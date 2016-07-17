@@ -10,6 +10,7 @@ which is introduced in
   Reducing the dimensionality of data with neural networks. 
   Science, 313(5786), 504-507.
   ```
+This paper can be accessed from [here](https://www.cs.toronto.edu/~hinton/science.pdf).
 
 In order to illustrate the model itself clearly, 
 further optimizations are omitted.
