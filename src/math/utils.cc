@@ -1,11 +1,3 @@
-/*
-Copyright 2016 WaizungTaam.  All rights reserved.
-
-License: Apache License 2.0
-Email:   waizungtaam@gmail.com
-
-*/
-
 #include <cmath>
 #include <string>
 #include <random>
@@ -108,8 +100,9 @@ Vector variance(const Matrix & mat, int dim) {
   if (dim == 0) {
     int idx_row;
     Vector res(mat.shape()[1], 0);
+    Vector mean_vec = nn::mean(mat, 0);
     for (idx_row = 0; idx_row < mat.shape()[0]; ++idx_row) {
-      res += nn::pow(mat[idx_row] - nn::mean(mat, 0), 2);
+      res += nn::pow(mat[idx_row] - mean_vec, 2);
     }
     return res / mat.shape()[0];
   } else if (dim == 1) {
