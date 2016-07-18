@@ -98,13 +98,9 @@ double variance(const Matrix & mat) {
 }
 Vector variance(const Matrix & mat, int dim) {
   if (dim == 0) {
-    int idx_row;
-    Vector res(mat.shape()[1], 0);
-    Vector mean_vec = nn::mean(mat, 0);
-    for (idx_row = 0; idx_row < mat.shape()[0]; ++idx_row) {
-      res += nn::pow(mat[idx_row] - mean_vec, 2);
-    }
-    return res / mat.shape()[0];
+    Matrix mean_mat(1, mat.shape()[1]);
+    mean_mat = nn::mean(mat, 0);
+    return (nn::pow(mat - mean_mat, 2)).sum(0) / mat.shape()[0];
   } else if (dim == 1) {
     Matrix mat_mean = nn::mean(mat, 1);
     return (nn::pow(mat - mat_mean, 2)).sum(1) / mat.shape()[1];
